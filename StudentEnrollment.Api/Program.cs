@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
-    options.UseSqlServer(connectionString);
+    options.UseSqlServer(connectionString, opt => opt.MigrationsAssembly(typeof(AppDbContext).Assembly.FullName));
 });
 
 builder.Services.AddCors(opt =>
